@@ -23,6 +23,13 @@
 - [ ] Deploy a Network Load Balancer with a TLS listener. Use path-based routing rules to forward the traffic to the correct target group. Configure client IP address preservation for traffic to the targets.
 - [ ] Deploy a Network Load Balancer with a TLS listener for each domain. Use host-based routing rules to forward the traffic to the correct target group for each domain. Configure client IP address preservation for traffic to the targets.
 
+**Explanation :**
+An Application Load Balancer (ALB) can be used to route traffic to multiple target groups based on the URL in the request.
+The ALB can be configured with an HTTPS listener to ensure all traffic uses HTTPS.
+TLS processing can be offloaded to the ALB, which reduces the load on the web server.
+Path-based routing rules can be used to route traffic to the correct target group based on the URL in the request.
+The X-Forwarded-For request header can be included with traffic to the targets, which will allow the web server to know the user's IP address and keep accurate logs for security purposes.
+
 **[⬆ Back to Top](#table-of-contents)**
 
 ### 3- A company has developed an application on AWS that will track inventory levels of vending machines and initiate the restocking process automatically. The company plans to integrate this application with vending machines and deploy the vending machines in several markets around the world. The application resides in a VPC in the us-east-1 Region. The application consists of an Amazon Elastic Container Service (Amazon ECS) cluster behind an Application Load Balancer (ALB). The communication from the vending machines to the application happens over HTTPS. The company is planning to use an AWS Global Accelerator accelerator and configure static IP addresses of the accelerator in the vending machines for application endpoint access. The application must be accessible only through the accelerator and not through a direct connection over the internet to the ALB endpoint. Which solution will meet these requirements?
@@ -32,14 +39,27 @@
 - [ ] Configure the ALB in a public subnet of the VPAttach an internet gateway. Add routes in the subnet route tables to point to the internet gateway. Configure the accelerator with endpoint groups that include the ALB endpoint. Configure the ALB's security group to only allow inbound traffic from the accelerator's IP addresses on the ALB listener port.
 - [ ] Configure the ALB in a private subnet of the VPC. Attach an internet gateway. Add routes in the subnet route tables to point to the internet gateway. Configure the accelerator with endpoint groups that include the ALB endpoint. Configure the ALB's security group to only allow inbound traffic from the accelerator's IP addresses on the ALB listener port.
 
+**Explanation :**
+- https://docs.aws.amazon.com/global-accelerator/latest/dg/secure-vpc-connections.html
+- When you add an internal Application Load Balancer or an Amazon EC2 instance endpoint in AWS Global Accelerator, you enable internet traffic to flow directly to and from the endpoint in Virtual Private Clouds (VPCs) by targeting it in a private subnet. The VPC that contains the load balancer or EC2 instance must have an internet gateway attached to it, to indicate that the VPC accepts internet traffic. However, you don't need public IP addresses on the load balancer or EC2 instance. You also don't need an associated internet gateway route for the subnet.
+- Placing the ALB in a private subnet ensures that it is not directly accessible from the internet.
+- Adding an internet gateway without adding routes in the subnet route tables prevents direct internet traffic to the ALB.
+- Configuring the AWS Global Accelerator with endpoint groups that include the ALB endpoint allows controlled access to the application through the accelerator.
+- Configuring the ALB's security group to only allow inbound traffic from the internet on the ALB listener port further restricts direct access, ensuring that the application is accessed only through the AWS Global Accelerator.
+  
 **[⬆ Back to Top](#table-of-contents)**
 
-### A global delivery company is modernizing its fleet management system. The company has several business units. Each business unit designs and maintains applications that are hosted in its own AWS account in separate application VPCs in the same AWS Region. Each business unit's applications are designed to get data from a central shared services VPC. The company wants the network connectivity architecture to provide granular security controls. The architecture also must be able to scale as more business units consume data from the central shared services VPC in the future. Which solution will meet these requirements in the MOST secure manner?
+### 4- A global delivery company is modernizing its fleet management system. The company has several business units. Each business unit designs and maintains applications that are hosted in its own AWS account in separate application VPCs in the same AWS Region. Each business unit's applications are designed to get data from a central shared services VPC. The company wants the network connectivity architecture to provide granular security controls. The architecture also must be able to scale as more business units consume data from the central shared services VPC in the future. Which solution will meet these requirements in the MOST secure manner?
 
 - [ ] Create a central transit gateway. Create a VPC attachment to each application VPC. Provide full mesh connectivity between all the VPCs by using the transit gateway.
 - [ ] Create VPC peering connections between the central shared services VPC and each application VPC in each business unit's AWS account.
-- [x] Create VPC endpoint services powered by AWS PrivateLink in the central shared services VPCreate VPC endpoints in each application VPC.
+- [x] Create VPC endpoint services powered by AWS PrivateLink in the central shared services VPC. Create VPC endpoints in each application VPC.
 - [ ] Create a central transit VPC with a VPN appliance from AWS Marketplace. Create a VPN attachment from each VPC to the transit VPC. Provide full mesh connectivity among all the VPCs.
+
+**Explanation:**
+- https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-share-your-services.html
+- VPC endpoints provides granualr control in Service level, while Transit Gateway in Network level
+- The most secure option is C as privatelink is one way. A is too permissive due to transit gateway full mesh configuration. B is good but traffic is 2 way whilst D doesn't make sense
 
 **[⬆ Back to Top](#table-of-contents)**
 
