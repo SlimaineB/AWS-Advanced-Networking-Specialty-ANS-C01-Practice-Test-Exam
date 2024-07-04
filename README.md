@@ -63,16 +63,22 @@ The X-Forwarded-For request header can be included with traffic to the targets, 
 
 **[⬆ Back to Top](#table-of-contents)**
 
-### A company uses a 4 Gbps AWS Direct Connect dedicated connection with a link aggregation group (LAG) bundle to connect to five VPCs that are deployed in the us-east-1 Region. Each VPC serves a different business unit and uses its own private VIF for connectivity to the on-premises environment. Users are reporting slowness when they access resources that are hosted on AWS. A network engineer finds that there are sudden increases in throughput and that the Direct Connect connection becomes saturated at the same time for about an hour each business day. The company wants to know which business unit is causing the sudden increase in throughput. The network engineer must find out this information and implement a solution to resolve the problem. Which solution will meet these requirements?
+### 5- A company uses a 4 Gbps AWS Direct Connect dedicated connection with a link aggregation group (LAG) bundle to connect to five VPCs that are deployed in the us-east-1 Region. Each VPC serves a different business unit and uses its own private VIF for connectivity to the on-premises environment. Users are reporting slowness when they access resources that are hosted on AWS. A network engineer finds that there are sudden increases in throughput and that the Direct Connect connection becomes saturated at the same time for about an hour each business day. The company wants to know which business unit is causing the sudden increase in throughput. The network engineer must find out this information and implement a solution to resolve the problem. Which solution will meet these requirements?
 
 - [x] Review the Amazon CloudWatch metrics for VirtualInterfaceBpsEgress and VirtualInterfaceBpsIngress to determine which VIF is sending the highest throughput during the period in which slowness is observed. Create a new 10 Gbps dedicated connection. Shift traffic from the existing dedicated connection to the new dedicated connection.
 - [ ] Review the Amazon CloudWatch metrics for VirtualInterfaceBpsEgress and VirtualInterfaceBpsIngress to determine which VIF is sending the highest throughput during the period in which slowness is observed. Upgrade the bandwidth of the existing dedicated connection to 10 Gbps.
 - [ ]  Review the Amazon CloudWatch metrics for ConnectionBpsIngress and ConnectionPpsEgress to determine which VIF is sending the highest throughput during the period in which slowness is observed. Upgrade the existing dedicated connection to a 5 Gbps hosted connection.
 - [ ] Review the Amazon CloudWatch metrics for ConnectionBpsIngress and ConnectionPpsEgress to determine which VIF is sending the highest throughput during the period in which slowness is observed. Create a new 10 Gbps dedicated connection. Shift traffic from the existing dedicated connection to the new dedicated connection.
 
+**Explanation:**
+- You cannot change the port speed after you create the connection request. To change the port speed, you must create and configure a new connection.
+- In fact, in AWS Direct Connect, you cannot upgrade an existing 4 x 1Gbps connection to a 10Gbps connection. Instead, you will need to create a new 10Gbps connection and move the traffic to the new connection.
+    - https://repost.aws/questions/QUxprf4oUTRHyvs-SylrzNRw/can-aws-direct-connect-ports-be-upgraded-from-1-gbps-to-10-gbps.
+- Hence, you must monitor the entire traffic, not each dedicated connection traffic. Option C and D are wrong for this reason :
+    - https://docs.aws.amazon.com/directconnect/latest/UserGuide/monitoring-cloudwatch.html
 **[⬆ Back to Top](#table-of-contents)**
 
-### A software-as-a-service (SaaS) provider hosts its solution on Amazon EC2 instances within a VPC in the AWS Cloud. All of the provider's customers also have their environments in the AWS Cloud. A recent design meeting revealed that the customers have IP address overlap with the provider's AWS deployment. The customers have stated that they will not share their internal IP addresses and that they do not want to connect to the provider's SaaS service over the internet. Which combination of steps is part of a solution that meets these requirements? (Choose two.)
+### 6- A software-as-a-service (SaaS) provider hosts its solution on Amazon EC2 instances within a VPC in the AWS Cloud. All of the provider's customers also have their environments in the AWS Cloud. A recent design meeting revealed that the customers have IP address overlap with the provider's AWS deployment. The customers have stated that they will not share their internal IP addresses and that they do not want to connect to the provider's SaaS service over the internet. Which combination of steps is part of a solution that meets these requirements? (Choose two.)
 
 - [x] Deploy the SaaS service endpoint behind a Network Load Balancer.
 - [x] Configure an endpoint service, and grant the customers permission to create a connection to the endpoint service.
@@ -80,9 +86,15 @@ The X-Forwarded-For request header can be included with traffic to the targets, 
 - [ ] Configure a VPC peering connection to the customer VPCs. Route traffic through NAT gateways.
 - [ ] Deploy an AWS Transit Gateway, and connect the SaaS VPC to it. Share the transit gateway with the customers. Configure routing on the transit gateway.
 
+**Explanation:**
+- Deploying the SaaS service endpoint behind a Network Load Balancer (NLB) allows for better scalability and performance, while also supporting connections from AWS PrivateLink, which can provide secure access to the SaaS service without crossing the public internet.
+- https://docs.aws.amazon.com/vpc/latest/privatelink/privatelink-access-saas.html
+![image](https://github.com/SlimaineB/AWS-Advanced-Networking-Specialty-ANS-C01-Practice-Test-Exam/assets/36957990/767c8d58-291d-4c59-8d64-253b371c81b8)
+
+
 **[⬆ Back to Top](#table-of-contents)**
 
-### A network engineer is designing the architecture for a healthcare company's workload that is moving to the AWS Cloud. All data to and from the on-premises environment must be encrypted in transit. All traffic also must be inspected in the cloud before the traffic is allowed to leave the cloud and travel to the on-premises environment or to the internet. The company will expose components of the workload to the internet so that patients can reserve appointments. The architecture must secure these components and protect them against DDoS attacks. The architecture also must provide protection against financial liability for services that scale out during a DDoS event. Which combination of steps should the network engineer take to meet all these requirements for the workload? (Choose three.)
+### 7- A network engineer is designing the architecture for a healthcare company's workload that is moving to the AWS Cloud. All data to and from the on-premises environment must be encrypted in transit. All traffic also must be inspected in the cloud before the traffic is allowed to leave the cloud and travel to the on-premises environment or to the internet. The company will expose components of the workload to the internet so that patients can reserve appointments. The architecture must secure these components and protect them against DDoS attacks. The architecture also must provide protection against financial liability for services that scale out during a DDoS event. Which combination of steps should the network engineer take to meet all these requirements for the workload? (Choose three.)
 
 - [ ] Use Traffic Mirroring to copy all traffic to a fleet of traffic capture appliances.
 - [ ] Set up AWS WAF on all network components.
@@ -91,6 +103,16 @@ The X-Forwarded-For request header can be included with traffic to the targets, 
 - [x] Use Gateway Load Balancers to insert third-party firewalls for inline traffic inspection.
 - [x] Configure AWS Shield Advanced and ensure that it is configured on all public assets.
 
+**Explanation:**
+
+- D: Use AWS Direct Connect with MACsec support for connectivity to the cloud. MACsec (Media Access Control Security) provides encryption in transit over the network for the Direct Connect link between the on-premises environment and AWS, ensuring that all data is encrypted as required.
+    - https://docs.aws.amazon.com/directconnect/latest/UserGuide/MACsec.html 
+- E: Use Gateway Load Balancers to insert third-party firewalls for inline traffic inspection. AWS Gateway Load Balancer makes it easy to deploy, scale, and manage third-party virtual network appliances. Using Gateway Load Balancer, you can easily insert, scale, and manage firewalls in the path of internet traffic for inspection purposes.
+    - https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html   
+- F: Configure AWS Shield Advanced and ensure that it is configured on all public assets. AWS Shield Advanced provides advanced DDoS (Distributed Denial of Service) protection. It not only defends your application against DDoS attacks but also provides cost protection, which can protect your business from additional charges incurred during a DDoS attack.
+    -  https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html
+- B is not correct because you can associate WAF rules with Amazon CloudFront, Amazon API Gateway, Application Load Balancer, and AWS AppSync resourcesonly and not all network component of VPC.
+  
 **[⬆ Back to Top](#table-of-contents)**
 
 ### A retail company is running its service on AWS. The company's architecture includes Application Load Balancers (ALBs) in public subnets. The ALB target groups are configured to send traffic to backend Amazon EC2 instances in private subnets. These backend EC2 instances can call externally hosted services over the internet by using a NAT gateway. The company has noticed in its billing that NAT gateway usage has increased significantly. A network engineer needs to find out the source of this increased usage. Which options can the network engineer use to investigate the traffic through the NAT gateway? (Choose two.)
