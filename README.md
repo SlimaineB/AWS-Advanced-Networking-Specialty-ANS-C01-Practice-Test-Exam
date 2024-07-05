@@ -343,15 +343,6 @@
 
 **[⬆ Back to Top](#table-of-contents)**
 
-### A network engineer must provide additional safeguards to protect encrypted data at Application Load Balancers (ALBs) through the use of a unique random session key. What should the network engineer do to meet this requirement?
-
-- [ ] Change the ALB security policy to a policy that supports TLS 1.2 protocol only.
-- [ ] Use AWS Key Management Service (AWS KMS) to encrypt session keys.
-- [ ] Associate an AWS WAF web ACL with the ALBs. and create a security rule to enforce forward secrecy (FS).
-- [ ] Change the ALB security policy to a policy that supports forward secrecy (FS).
-
-**[⬆ Back to Top](#table-of-contents)**
-
 ### 37- A company has deployed a software-defined WAN (SD-WAN) solution to interconnect all of its offices. The company is migrating workloads to AWS and needs to extend its SD-WAN solution to support connectivity to these workloads. A network engineer plans to deploy AWS Transit Gateway Connect and two SD-WAN virtual appliances to provide this connectivity. According to company policies, only a single SD-WAN virtual appliance can handle traffic from AWS workloads at a given time. How should the network engineer configure routing to meet these requirements?
 
 - [ ] Add a static default route in the transit gateway route table to point to the secondary SD-WAN virtual appliance. Add routes that are more specific to point to the primary SD-WAN virtual appliance.
@@ -404,15 +395,6 @@
 - [ ] Appliance mode is not enabled on the transit gateway attachment to the shared services VPC.
 - [ ] The stateful appliances and the transit gateway attachments are deployed in the same subnet in the shared services VPC.
 - [ ] Appliance mode is not enabled on the transit gateway attachment to the application VPCs.
-
-**[⬆ Back to Top](#table-of-contents)**
-
-### A company has hundreds of Amazon EC2 instances that are running in two production VPCs across all Availability Zones in the us-east-1 Region. The production VPCs are named VPC A and VPC B. A new security regulation requires all traffic between production VPCs to be inspected before the traffic is routed to its final destination. The company deploys a new shared VPC that contains a stateful firewall appliance and a transit gateway with a VPC attachment across all VPCs to route traffic between VPC A and VPC B through the firewall appliance for inspection. During testing, the company notices that the transit gateway is dropping the traffic whenever the traffic is between two Availability Zones. What should a network engineer do to fix this issue with the LEAST management overhead?
-
-- [ ] In the shared VPC, replace the VPC attachment with a VPN attachment. Create a VPN tunnel between the transit gateway and the firewall appliance. Configure BGP.
-- [ ] Enable transit gateway appliance mode on the VPC attachment in VPC A and VPC B.
-- [ ] Enable transit gateway appliance mode on the VPC attachment in the shared VPC.
-- [ ] In the shared VPC, configure one VPC peering connection to VPC A and another VPC peering connection to VPC B.
 
 **[⬆ Back to Top](#table-of-contents)**
 
@@ -496,15 +478,6 @@
 - [ ] Create a private hosted zone for staging example com in the staging account.
 - [ ] Create an example com NS record in the staging example.com domain. Populate the value with the name servers from the example.com domain. Set the routing policy type to simple routing.
 - [ ] Create a public hosted zone for staging.example.com in the staging account.
-
-**[⬆ Back to Top](#table-of-contents)**
-
-### A company plans to deploy a two-tier web application to a new VPC in a single AWS Region. The company has configured the VPC with an internet gateway and four subnets. Two of the subnets are public and have default routes that point to the internet gateway. Two of the subnets are private and share a route table that does not have a default route. The application will run on a set of Amazon EC2 instances that will be deployed behind an external Application Load Balancer. The EC2 instances must not be directly accessible from the internet. The application will use an Amazon S3 bucket in the same Region to store data. The application will invoke S3 GET API operations and S3 PUT API operations from the EC2 instances. A network engineer must design a VPC architecture that minimizes data transfer cost. Which solution will meet these requirements?
-
-- [ ] Deploy the EC2 instances in the public subnets. Create an S3 interface endpoint in the VPC. Modify the application configuration to use the S3 endpoint-specific DNS hostname.
-- [ ] Deploy the EC2 instances in the private subnets. Create a NAT gateway in the VPC. Create default routes in the private subnets to the NAT gateway. Connect to Amazon S3 by using the NAT gateway.
-- [ ] Deploy the EC2 instances in the private subnets. Create an S3 gateway endpoint in the VPSpecify die route table of the private subnets during endpoint creation to create routes to Amazon S3.
-- [ ] Deploy the EC2 instances in the private subnets. Create an S3 interface endpoint in the VPC. Modify the application configuration to use the S3 endpoint-specific DNS hostname.
 
 **[⬆ Back to Top](#table-of-contents)**
 
@@ -834,5 +807,33 @@
 - [ ] Use Amazon Route 53 Resolver DNS Firewall. Configure a domain list with a rule group.
 - [ ] Use AWS Network Firewall with domain name filtering.
 - [ ] Configure an Amazon Route 53 Resolver outbound endpoint with rules to filter and block suspicious traffic.
+
+**[⬆ Back to Top](#table-of-contents)**
+
+### 88- A network engineer must provide additional safeguards to protect encrypted data at Application Load Balancers (ALBs) through the use of a unique random session key. What should the network engineer do to meet this requirement?
+
+- [ ] Change the ALB security policy to a policy that supports TLS 1.2 protocol only.
+- [ ] Use AWS Key Management Service (AWS KMS) to encrypt session keys.
+- [ ] Associate an AWS WAF web ACL with the ALBs. and create a security rule to enforce forward secrecy (FS).
+- [ ] Change the ALB security policy to a policy that supports forward secrecy (FS).
+
+**[⬆ Back to Top](#table-of-contents)**
+
+### 89- A company plans to deploy a two-tier web application to a new VPC in a single AWS Region. The company has configured the VPC with an internet gateway and four subnets. Two of the subnets are public and have default routes that point to the internet gateway. Two of the subnets are private and share a route table that does not have a default route. The application will run on a set of Amazon EC2 instances that will be deployed behind an external Application Load Balancer. The EC2 instances must not be directly accessible from the internet. The application will use an Amazon S3 bucket in the same Region to store data. The application will invoke S3 GET API operations and S3 PUT API operations from the EC2 instances. A network engineer must design a VPC architecture that minimizes data transfer cost. Which solution will meet these requirements?
+
+- [ ] Deploy the EC2 instances in the public subnets. Create an S3 interface endpoint in the VPC. Modify the application configuration to use the S3 endpoint-specific DNS hostname.
+- [ ] Deploy the EC2 instances in the private subnets. Create a NAT gateway in the VPC. Create default routes in the private subnets to the NAT gateway. Connect to Amazon S3 by using the NAT gateway.
+- [ ] Deploy the EC2 instances in the private subnets. Create an S3 gateway endpoint in the VPSpecify die route table of the private subnets during endpoint creation to create routes to Amazon S3.
+- [ ] Deploy the EC2 instances in the private subnets. Create an S3 interface endpoint in the VPC. Modify the application configuration to use the S3 endpoint-specific DNS hostname.
+
+**[⬆ Back to Top](#table-of-contents)**
+
+
+### 90- A company has hundreds of Amazon EC2 instances that are running in two production VPCs across all Availability Zones in the us-east-1 Region. The production VPCs are named VPC A and VPC B. A new security regulation requires all traffic between production VPCs to be inspected before the traffic is routed to its final destination. The company deploys a new shared VPC that contains a stateful firewall appliance and a transit gateway with a VPC attachment across all VPCs to route traffic between VPC A and VPC B through the firewall appliance for inspection. During testing, the company notices that the transit gateway is dropping the traffic whenever the traffic is between two Availability Zones. What should a network engineer do to fix this issue with the LEAST management overhead?
+
+- [ ] In the shared VPC, replace the VPC attachment with a VPN attachment. Create a VPN tunnel between the transit gateway and the firewall appliance. Configure BGP.
+- [ ] Enable transit gateway appliance mode on the VPC attachment in VPC A and VPC B.
+- [ ] Enable transit gateway appliance mode on the VPC attachment in the shared VPC.
+- [ ] In the shared VPC, configure one VPC peering connection to VPC A and another VPC peering connection to VPC B.
 
 **[⬆ Back to Top](#table-of-contents)**
