@@ -249,7 +249,8 @@ By changing the router configurations to summarize the advertised routes, the ne
 - An interface VPC endpoint provides reliable, scalable connectivity to CloudWatch without requiring a NAT gateway.
 - To use private DNS, you must enable DNS hostnames and DNS resolution for your VPC.
 - The security group for the interface endpoint must allow communication between the endpoint network interface and the resources in your VPC that must communicate with the service.
-
+- Option F only makes sense for gateway endpoints but with interface endpoints what we get is an internally created private hosted zone that will resolve "public" endpoint names (like cloudwatch) to internal IP addresses (that of our interface endpoints) so no routes are needed and hence no updates to route tables.
+  
 **[⬆ Back to Top](#table-of-contents)**
 
 ### An international company provides early warning about tsunamis. The company plans to use IoT devices to monitor sea waves around the world. The data that is collected by the IoT devices must reach the company's infrastructure on AWS as quickly as possible. The company is using three operation centers around the world. Each operation center is connected to AWS through Its own AWS Direct Connect connection. Each operation center is connected to the internet through at least two upstream internet service providers. The company has its own provider-independent (PI) address space. The IoT devices use TCP protocols for reliable transmission of the data they collect. The IoT devices have both landline and mobile internet connectivity. The infrastructure and the solution will be deployed in multiple AWS Regions. The company will use Amazon Route 53 for DNS services. A network engineer needs to design connectivity between the IoT devices and the services that run in the AWS Cloud. Which solution will meet these requirements with the HIGHEST availability?
