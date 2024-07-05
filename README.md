@@ -221,13 +221,18 @@ By changing the router configurations to summarize the advertised routes, the ne
 
 **[⬆ Back to Top](#table-of-contents)**
 
-### A company has multiple AWS accounts. Each account contains one or more VPCs. A new security guideline requires the inspection of all traffic between VPCs. The company has deployed a transit gateway that provides connectivity between all VPCs. The company also has deployed a shared services VPC with Amazon EC2 instances that include IDS services for stateful inspection. The EC2 instances are deployed across three Availability Zones. The company has set up VPC associations and routing on the transit gateway. The company has migrated a few test VPCs to the new solution for traffic inspection. Soon after the configuration of routing, the company receives reports of intermittent connections for traffic that crosses Availability Zones. What should a network engineer do to resolve this issue?
+### 15- A company has multiple AWS accounts. Each account contains one or more VPCs. A new security guideline requires the inspection of all traffic between VPCs. The company has deployed a transit gateway that provides connectivity between all VPCs. The company also has deployed a shared services VPC with Amazon EC2 instances that include IDS services for stateful inspection. The EC2 instances are deployed across three Availability Zones. The company has set up VPC associations and routing on the transit gateway. The company has migrated a few test VPCs to the new solution for traffic inspection. Soon after the configuration of routing, the company receives reports of intermittent connections for traffic that crosses Availability Zones. What should a network engineer do to resolve this issue?
 
 - [ ] Modify the transit gateway VPC attachment on the shared services VPC by enabling cross-Availability Zone load balancing.
 - [x] Modify the transit gateway VPC attachment on the shared services VPC by enabling appliance mode support.
 - [ ] Modify the transit gateway by selecting VPN equal-cost multi-path (ECMP) routing support.
 - [ ] Modify the transit gateway by selecting multicast support.
 
+**Explanation :**
+- https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-appliance-scenario.html#transit-gateway-appliance-support
+- Appliance mode should be enabled to ensure that the returning traffic (in case of stateful connections) takes the same path as incoming traffic, otherwise it might go to different AZs
+- In the context of AWS Transit Gateway, appliance mode is a feature designed for network appliances, such as intrusion detection or prevention systems (IDS/IPS). When appliance mode is enabled, the transit gateway forwards traffic to the appliance instances in a more predictable manner, ensuring that the same flow of traffic goes consistently to the same appliance.
+  
 **[⬆ Back to Top](#table-of-contents)**
 
 ### A company is using a NAT gateway to allow internet connectivity for private subnets in a VPC in the us-west-2 Region. After a security audit, the company needs to remove the NAT gateway. In the private subnets, the company has resources that use the unified Amazon CloudWatch agent. A network engineer must create a solution to ensure that the unified CloudWatch agent continues to work after the removal of the NAT gateway. Which combination of steps should the network engineer take to meet these requirements? (Choose three.)
