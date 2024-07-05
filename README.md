@@ -516,15 +516,6 @@ By changing the router configurations to summarize the advertised routes, the ne
 
 **[⬆ Back to Top](#table-of-contents)**
 
-### A company has hundreds of Amazon EC2 instances that are running in two production VPCs across all Availability Zones in the us-east-1 Region. The production VPCs are named VPC A and VPC B. A new security regulation requires all traffic between production VPCs to be inspected before the traffic is routed to its final destination. The company deploys a new shared VPC that contains a stateful firewall appliance and a transit gateway with a VPC attachment across all VPCs to route traffic between VPC A and VPC B through the firewall appliance for inspection. During testing, the company notices that the transit gateway is dropping the traffic whenever the traffic is between two Availability Zones. What should a network engineer do to fix this issue with the LEAST management overhead?
-
-- [ ] In the shared VPC, replace the VPC attachment with a VPN attachment. Create a VPN tunnel between the transit gateway and the firewall appliance. Configure BGP.
-- [ ] Enable transit gateway appliance mode on the VPC attachment in VPC A and VPC B.
-- [x] Enable transit gateway appliance mode on the VPC attachment in the shared VPC.
-- [ ] In the shared VPC, configure one VPC peering connection to VPC A and another VPC peering connection to VPC B.
-
-**[⬆ Back to Top](#table-of-contents)**
-
 ### A company has deployed a critical application on a fleet of Amazon EC2 instances behind an Application Load Balancer. The application must always be reachable on port 443 from the public internet. The application recently had an outage that resulted from an incorrect change to the EC2 security group. A network engineer needs to automate a way to verify the network connectivity between the public internet and the EC2 instances whenever a change is made to the security group. The solution also must notify the network engineer when the change affects the connection. Which solution will meet these requirements?
 
 - [ ] Enable VPC Flow Logs on the elastic network interface of each EC2 instance to capture REJECT traffic on port 443. Publish the flow log records to a log group in Amazon CloudWatch Logs. Create a CloudWatch Logs metric filter for the log group for rejected traffic. Create an alarm to notify the network engineer.
@@ -952,5 +943,14 @@ By changing the router configurations to summarize the advertised routes, the ne
 - [ ] Deploy the EC2 instances in the private subnets. Create a NAT gateway in the VPC. Create default routes in the private subnets to the NAT gateway. Connect to Amazon S3 by using the NAT gateway.
 - [x] Deploy the EC2 instances in the private subnets. Create an S3 gateway endpoint in the VPSpecify die route table of the private subnets during endpoint creation to create routes to Amazon S3.
 - [ ] Deploy the EC2 instances in the private subnets. Create an S3 interface endpoint in the VPC. Modify the application configuration to use the S3 endpoint-specific DNS hostname.
+
+### 90- A company has hundreds of Amazon EC2 instances that are running in two production VPCs across all Availability Zones in the us-east-1 Region. The production VPCs are named VPC A and VPC B. A new security regulation requires all traffic between production VPCs to be inspected before the traffic is routed to its final destination. The company deploys a new shared VPC that contains a stateful firewall appliance and a transit gateway with a VPC attachment across all VPCs to route traffic between VPC A and VPC B through the firewall appliance for inspection. During testing, the company notices that the transit gateway is dropping the traffic whenever the traffic is between two Availability Zones. What should a network engineer do to fix this issue with the LEAST management overhead?
+
+- [ ] In the shared VPC, replace the VPC attachment with a VPN attachment. Create a VPN tunnel between the transit gateway and the firewall appliance. Configure BGP.
+- [ ] Enable transit gateway appliance mode on the VPC attachment in VPC A and VPC B.
+- [x] Enable transit gateway appliance mode on the VPC attachment in the shared VPC.
+- [ ] In the shared VPC, configure one VPC peering connection to VPC A and another VPC peering connection to VPC B.
+
+**[⬆ Back to Top](#table-of-contents)**
 
 **[⬆ Back to Top](#table-of-contents)**
