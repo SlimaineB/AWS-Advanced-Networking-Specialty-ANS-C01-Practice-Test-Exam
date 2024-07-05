@@ -514,6 +514,11 @@ By changing the router configurations to summarize the advertised routes, the ne
 - [ ] The stateful appliances and the transit gateway attachments are deployed in the same subnet in the shared services VPC.
 - [ ] Appliance mode is not enabled on the transit gateway attachment to the application VPCs.
 
+**Explanation :**
+- https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-appliance-scenario.html
+![image](https://github.com/SlimaineB/AWS-Advanced-Networking-Specialty-ANS-C01-Practice-Test-Exam/assets/36957990/c927346c-9406-4760-84be-c81c89640b5b)
+
+
 **[⬆ Back to Top](#table-of-contents)**
 
 ### A company has hundreds of Amazon EC2 instances that are running in two production VPCs across all Availability Zones in the us-east-1 Region. The production VPCs are named VPC A and VPC B. A new security regulation requires all traffic between production VPCs to be inspected before the traffic is routed to its final destination. The company deploys a new shared VPC that contains a stateful firewall appliance and a transit gateway with a VPC attachment across all VPCs to route traffic between VPC A and VPC B through the firewall appliance for inspection. During testing, the company notices that the transit gateway is dropping the traffic whenever the traffic is between two Availability Zones. What should a network engineer do to fix this issue with the LEAST management overhead?
