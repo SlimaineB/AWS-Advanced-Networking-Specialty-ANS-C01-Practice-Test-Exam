@@ -276,8 +276,10 @@ By changing the router configurations to summarize the advertised routes, the ne
 
 **Explanation :**
 - https://docs.aws.amazon.com/directconnect/latest/UserGuide/MACsec.html
-
-
+- MACsec (Media Access Control Security): MACsec provides a layer 2 encryption mechanism, encrypting the entire Ethernet frame between the on-premises data center and the AWS Cloud. It offers high throughput while encrypting the data at the link layer.
+- Transit VIF and Direct Connect Gateway: By configuring a transit VIF on the Direct Connect connection, you can connect it directly to a Direct Connect gateway associated with the transit gateway. This architecture allows you to efficiently route traffic to multiple VPCs attached to the transit gateway.
+- VPN is limited in throughpout so don't fullfill requirement
+  
 **[⬆ Back to Top](#table-of-contents)**
 
 ### A network engineer must develop an AWS CloudFormation template that can create a virtual private gateway, a customer gateway, a VPN connection, and static routes in a route table. During testing of the template, the network engineer notes that the CloudFormation template has encountered an error and is rolling back. What should the network engineer do to resolve the error?
