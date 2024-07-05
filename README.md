@@ -235,7 +235,7 @@ By changing the router configurations to summarize the advertised routes, the ne
   
 **[⬆ Back to Top](#table-of-contents)**
 
-### A company is using a NAT gateway to allow internet connectivity for private subnets in a VPC in the us-west-2 Region. After a security audit, the company needs to remove the NAT gateway. In the private subnets, the company has resources that use the unified Amazon CloudWatch agent. A network engineer must create a solution to ensure that the unified CloudWatch agent continues to work after the removal of the NAT gateway. Which combination of steps should the network engineer take to meet these requirements? (Choose three.)
+### 16- A company is using a NAT gateway to allow internet connectivity for private subnets in a VPC in the us-west-2 Region. After a security audit, the company needs to remove the NAT gateway. In the private subnets, the company has resources that use the unified Amazon CloudWatch agent. A network engineer must create a solution to ensure that the unified CloudWatch agent continues to work after the removal of the NAT gateway. Which combination of steps should the network engineer take to meet these requirements? (Choose three.)
 
 - [x] Validate that private DNS is enabled on the VPC by setting the enableDnsHostnames VPC attribute and the enableDnsSupport VPC attribute to true.
 - [ ] Create a new security group with an entry to allow outbound traffic that uses the TCP protocol on port 443 to destination 0.0.0.0/0.
@@ -243,6 +243,12 @@ By changing the router configurations to summarize the advertised routes, the ne
 - [x] Create the following interface VPC endpoints in the VPC: com. Amazonaws.us-west-2.logs and com. Amazonaws.us-west-2.monitoring. Associate the new security group with the endpoint network interfaces.
 - [ ] Create the following interface VPC endpoint in the VPC: com. Amazonaws.us-west-2.cloudwatch. Associate the new security group with the endpoint network interfaces.
 - [ ] Associate the VPC endpoint or endpoints with route tables that the private subnets use.
+
+**Explanation :**
+- https://docs.aws.amazon.com/vpc/latest/privatelink/aws-services-privatelink-support.html
+- An interface VPC endpoint provides reliable, scalable connectivity to CloudWatch without requiring a NAT gateway.
+- To use private DNS, you must enable DNS hostnames and DNS resolution for your VPC.
+- The security group for the interface endpoint must allow communication between the endpoint network interface and the resources in your VPC that must communicate with the service.
 
 **[⬆ Back to Top](#table-of-contents)**
 
