@@ -173,23 +173,36 @@ The timing of Network Firewall log delivery varies by location type, averaging 3
 - Need to switch to "AWSProvidedDNS" in DHCP Options sets to enable resolving EFS endpoint URLs.
 - In addition, a DNS outbound endpoint is required in the central VPC to allow forwarding queries to on-prem DNS as required, which needs to create forwarding rules and share them among AWS Org member accounts.
 
+![image](https://github.com/SlimaineB/AWS-Advanced-Networking-Specialty-ANS-C01-Practice-Test-Exam/assets/36957990/840315ed-83f3-4b35-a4b3-82ccbc0068f9)
+
+
 **[⬆ Back to Top](#table-of-contents)**
 
-### An ecommerce company is hosting a web application on Amazon EC2 instances to handle continuously changing customer demand. The EC2 instances are part of an Auto Scaling group. The company wants to implement a solution to distribute traffic from customers to the EC2 instances. The company must encrypt all traffic at all stages between the customers and the application servers. No decryption at intermediate points is allowed. Which solution will meet these requirements?
+### 12- An ecommerce company is hosting a web application on Amazon EC2 instances to handle continuously changing customer demand. The EC2 instances are part of an Auto Scaling group. The company wants to implement a solution to distribute traffic from customers to the EC2 instances. The company must encrypt all traffic at all stages between the customers and the application servers. No decryption at intermediate points is allowed. Which solution will meet these requirements?
 
 - [ ] Create an Application Load Balancer (ALB). Add an HTTPS listener to the ALB. Configure the Auto Scaling group to register instances with the ALB's target group.
 - [ ] Create an Amazon CloudFront distribution. Configure the distribution with a custom SSL/TLS certificate. Set the Auto Scaling group as the distribution's origin.
 - [x] Create a Network Load Balancer (NLB). Add a TCP listener to the NLB. Configure the Auto Scaling group to register instances with the NLB's target group.
 - [ ] Create a Gateway Load Balancer (GLB). Configure the Auto Scaling group to register instances with the GLB's target group.
 
+**Explanation :**
+- If you need to pass encrypted traffic to the targets without the load balancer decrypting it, create a TCP listener on port 443 instead of creating a TLS listener.
+- https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html
+- ALB is incorrect because  HTTPS listener will have ALB itself to intercept and terminate SSL/TLS connection.
+  
 **[⬆ Back to Top](#table-of-contents)**
 
-### A company has two on-premises data center locations. There is a company-managed router at each data center. Each data center has a dedicated AWS Direct Connect connection to a Direct Connect gateway through a private virtual interface. The router for the first location is advertising 110 routes to the Direct Connect gateway by using BGP, and the router for the second location is advertising 60 routes to the Direct Connect gateway by using BGP. The Direct Connect gateway is attached to a company VPC through a virtual private gateway. A network engineer receives reports that resources in the VPC are not reachable from various locations in either data center. The network engineer checks the VPC route table and sees that the routes from the first data center location are not being populated into the route table. The network engineer must resolve this issue in the most operationally efficient manner. What should the network engineer do to meet these requirements?
+### 13- A company has two on-premises data center locations. There is a company-managed router at each data center. Each data center has a dedicated AWS Direct Connect connection to a Direct Connect gateway through a private virtual interface. The router for the first location is advertising 110 routes to the Direct Connect gateway by using BGP, and the router for the second location is advertising 60 routes to the Direct Connect gateway by using BGP. The Direct Connect gateway is attached to a company VPC through a virtual private gateway. A network engineer receives reports that resources in the VPC are not reachable from various locations in either data center. The network engineer checks the VPC route table and sees that the routes from the first data center location are not being populated into the route table. The network engineer must resolve this issue in the most operationally efficient manner. What should the network engineer do to meet these requirements?
 
 - [ ] Remove the Direct Connect gateway, and create a new private virtual interface from each company router to the virtual private gateway of the VPC.
 - [x] Change the router configurations to summarize the advertised routes.
 - [ ] Open a support ticket to increase the quota on advertised routes to the VPC route table.
 - [ ] Create an AWS Transit Gateway. Attach the transit gateway to the VPC, and connect the Direct Connect gateway to the transit gateway.
+
+**Explanation :**
+- The issue appears to be related to the number of routes advertised from each data center location. AWS Direct Connect has a limit on the number of routes that can be advertised to a virtual private gateway in a VPC (100 routes by default). In this case, the router for the first data center is advertising 110 routes, which exceeds the default limit, leading to the routes not being populated into the VPC route table.
+To resolve this issue in the most operationally efficient manner, the network engineer should consider summarizing the advertised routes. Summarizing routes involves aggregating a set of routes into a single, more general route. In BGP, this is typically done using route summarization.
+By changing the router configurations to summarize the advertised routes, the network engineer can reduce the number of routes being advertised to the Direct Connect gateway, ensuring that it stays within the route limit imposed by AWS.
 
 **[⬆ Back to Top](#table-of-contents)**
 
