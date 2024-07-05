@@ -515,8 +515,11 @@ By changing the router configurations to summarize the advertised routes, the ne
 - [ ] Appliance mode is not enabled on the transit gateway attachment to the application VPCs.
 
 **Explanation :**
+
 - https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-appliance-scenario.html
+- 
 ![image](https://github.com/SlimaineB/AWS-Advanced-Networking-Specialty-ANS-C01-Practice-Test-Exam/assets/36957990/c927346c-9406-4760-84be-c81c89640b5b)
+- If your VPC attachments span multiple Availability Zones and you require traffic between source and destination hosts to be routed through the same appliance for stateful inspection, enable appliance mode support for the VPC attachment in which the appliance is located.
 
 
 **[⬆ Back to Top](#table-of-contents)**
