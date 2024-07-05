@@ -450,14 +450,6 @@ By changing the router configurations to summarize the advertised routes, the ne
 - [ ] Create a Direct Connect transit VIF and configure BGP peering with the AWS assigned IPv6 peering address. Create a new VPN connection that supports IPv6 connectivity. Add an egress-only internet gateway. Update any affected VPC security groups and route tables to provide connectivity within the VPC and between the VPC and the on-premises devices.
 - [ ] Create a Direct Connect transit VIF and configure BGP peering with the AWS assigned IPv6 peering address. Create a new VPN connection that supports IPv6 connectivity. Add a NAT gateway. Update any affected VPC security groups and route tables to provide connectivity within the VPC and between the VPC and the on-premises devices.
 
-**[⬆ Back to Top](#table-of-contents)**
-
-### A network engineer must provide additional safeguards to protect encrypted data at Application Load Balancers (ALBs) through the use of a unique random session key. What should the network engineer do to meet this requirement?
-
-- [ ] Change the ALB security policy to a policy that supports TLS 1.2 protocol only.
-- [ ] Use AWS Key Management Service (AWS KMS) to encrypt session keys.
-- [ ] Associate an AWS WAF web ACL with the ALBs. and create a security rule to enforce forward secrecy (FS).
-- [x] Change the ALB security policy to a policy that supports forward secrecy (FS).
 
 **[⬆ Back to Top](#table-of-contents)**
 
@@ -953,3 +945,12 @@ By changing the router configurations to summarize the advertised routes, the ne
 - [ ] Configure an Amazon Route 53 Resolver outbound endpoint with rules to filter and block suspicious traffic.
 
 **[⬆ Back to Top](#table-of-contents)**
+
+**[⬆ Back to Top](#table-of-contents)**
+
+### A network engineer must provide additional safeguards to protect encrypted data at Application Load Balancers (ALBs) through the use of a unique random session key. What should the network engineer do to meet this requirement?
+
+- [ ] Change the ALB security policy to a policy that supports TLS 1.2 protocol only.
+- [ ] Use AWS Key Management Service (AWS KMS) to encrypt session keys.
+- [ ] Associate an AWS WAF web ACL with the ALBs. and create a security rule to enforce forward secrecy (FS).
+- [x] Change the ALB security policy to a policy that supports forward secrecy (FS).
