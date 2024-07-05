@@ -450,6 +450,15 @@ By changing the router configurations to summarize the advertised routes, the ne
 - [ ] Create a Direct Connect transit VIF and configure BGP peering with the AWS assigned IPv6 peering address. Create a new VPN connection that supports IPv6 connectivity. Add an egress-only internet gateway. Update any affected VPC security groups and route tables to provide connectivity within the VPC and between the VPC and the on-premises devices.
 - [ ] Create a Direct Connect transit VIF and configure BGP peering with the AWS assigned IPv6 peering address. Create a new VPN connection that supports IPv6 connectivity. Add a NAT gateway. Update any affected VPC security groups and route tables to provide connectivity within the VPC and between the VPC and the on-premises devices.
 
+**Explanation :**
+- https://aws.amazon.com/blogs/networking-and-content-delivery/dual-stack-ipv6-architectures-for-aws-an d-hybrid-networks/
+- For dual-stack connectivity on the Site-to-Site VPN connection via a Transit Gateway, you need to create two VPN connections, one for the IPv4 stack and one for the IPv6 stack. D. For AWS Direct Connect connection, reuse your existing VIFs and enable them for dual-stack support.
+- IPv6 addresses are only supported for the inside IP addresses of the VPN tunnels. The outside tunnel IP addresses for the AWS endpoints are IPv4 addresses, and the public IP address of your customer gateway must be an IPv4 address.
+- Site-to-Site VPN connections on a virtual private gateway do not support IPv6.
+- You cannot enable IPv6 support for an existing Site-to-Site VPN connection.
+- A Site-to-Site VPN connection cannot support both IPv4 and IPv6 traffic.
+
+https://docs.aws.amazon.com/vpn/latest/s2svpn/ipv4-ipv6.html
 
 **[⬆ Back to Top](#table-of-contents)**
 
