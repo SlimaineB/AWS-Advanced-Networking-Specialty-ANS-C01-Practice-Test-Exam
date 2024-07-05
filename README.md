@@ -253,12 +253,17 @@ By changing the router configurations to summarize the advertised routes, the ne
   
 **[⬆ Back to Top](#table-of-contents)**
 
-### An international company provides early warning about tsunamis. The company plans to use IoT devices to monitor sea waves around the world. The data that is collected by the IoT devices must reach the company's infrastructure on AWS as quickly as possible. The company is using three operation centers around the world. Each operation center is connected to AWS through Its own AWS Direct Connect connection. Each operation center is connected to the internet through at least two upstream internet service providers. The company has its own provider-independent (PI) address space. The IoT devices use TCP protocols for reliable transmission of the data they collect. The IoT devices have both landline and mobile internet connectivity. The infrastructure and the solution will be deployed in multiple AWS Regions. The company will use Amazon Route 53 for DNS services. A network engineer needs to design connectivity between the IoT devices and the services that run in the AWS Cloud. Which solution will meet these requirements with the HIGHEST availability?
+### 17- An international company provides early warning about tsunamis. The company plans to use IoT devices to monitor sea waves around the world. The data that is collected by the IoT devices must reach the company's infrastructure on AWS as quickly as possible. The company is using three operation centers around the world. Each operation center is connected to AWS through Its own AWS Direct Connect connection. Each operation center is connected to the internet through at least two upstream internet service providers. The company has its own provider-independent (PI) address space. The IoT devices use TCP protocols for reliable transmission of the data they collect. The IoT devices have both landline and mobile internet connectivity. The infrastructure and the solution will be deployed in multiple AWS Regions. The company will use Amazon Route 53 for DNS services. A network engineer needs to design connectivity between the IoT devices and the services that run in the AWS Cloud. Which solution will meet these requirements with the HIGHEST availability?
 
 - [ ] Set up an Amazon CloudFront distribution with origin failover. Create an origin group for each Region where the solution is deployed.
 - [ ] Set up Route 53 latency-based routing. Add latency alias records. For the latency alias records, set the value of Evaluate Target Health to Yes.
 - [x] Set up an accelerator in AWS Global Accelerator. Configure Regional endpoint groups and health checks.
 - [ ] Set up Bring Your Own IP (BYOIP) addresses. Use the same PI addresses for each Region where the solution is deployed.
+
+**Explanation :**
+- AWS Global Accelerator is designed to provide a highly available and performant solution for global applications. It uses anycast IP addresses to route traffic to optimal AWS endpoint locations. In this scenario, setting up an accelerator in AWS Global Accelerator with Regional endpoint groups is suitable for the distributed architecture of the IoT devices and the AWS infrastructure.
+- https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-benefits-of-migrating.html
+- https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html
 
 **[⬆ Back to Top](#table-of-contents)**
 
