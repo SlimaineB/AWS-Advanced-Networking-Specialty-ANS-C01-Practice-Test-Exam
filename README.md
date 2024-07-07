@@ -895,16 +895,22 @@ For example, suppose you own the domain example.com, but you want to delegate co
 
 **[⬆ Back to Top](#table-of-contents)**
 
-### A gaming company is planning to launch a globally available game that is hosted in one AWS Region. The game backend is hosted on Amazon EC2 instances that are part of an Auto Scaling group. The game uses the gRPC protocol for bidirectional streaming between game clients and the backend. The company needs to filter incoming traffic based on the source IP address to protect the game. Which solution will meet these requirements?
+### 79- A gaming company is planning to launch a globally available game that is hosted in one AWS Region. The game backend is hosted on Amazon EC2 instances that are part of an Auto Scaling group. The game uses the gRPC protocol for bidirectional streaming between game clients and the backend. The company needs to filter incoming traffic based on the source IP address to protect the game. Which solution will meet these requirements?
 
 - [x] Configure an AWS Global Accelerator accelerator with an Application Load Balancer (ALB) endpoint. Attach the ALB to the Auto Scaling group. Configure an AWS WAF web ACL for the ALB to filter traffic based on the source IP address.
 - [ ] Configure an AWS Global Accelerator accelerator with a Network Load Balancer (NLB) endpoint. Attach the NLB to the Auto Scaling group. Configure security groups for the EC2 instances to filter traffic based on the source IP address.
 - [ ] Configure an Amazon CloudFront distribution with an Application Load Balancer (ALB) endpoint. Attach the ALB to the Auto Scaling group. Configure an AWS WAF web ACL for the ALB to filter traffic based on the source IP address.
 - [ ] Configure an Amazon CloudFront distribution with a Network Load Balancer (NLB) endpoint. Attach the NLB to the Auto Scaling group. Configure security groups for the EC2 instances to filter traffic based on the source IP address.
 
+**Explanation :**
+A – The accelerator in AWS Global Accelerator will project low-latency endpoints to the global users of the game. The accelerator also will route the traffic over the AWS network backbone to the AWS Region that is
+hosting the game. The Application Load Balancer (ALB) will support the use of the gRPC protocol and client IP address preservation. The ALB will distribute traffic to the Amazon EC2 instances in the Auto Scaling group to
+support the game’s load and will provide an endpoint that will support the accelerator. The association of an AWS WAF web ACL with the ALB will provide the required IP filtering.
+The other answer options do not meet the requirements. A Network Load Balancer does not support client IP address preservation, and Amazon CloudFront does not support the gRPC protocol.
+
 **[⬆ Back to Top](#table-of-contents)**
 
-### A company has multiple VPCs in the us-east-1 Region. The company has deployed a website in one of the VPCs. The company wants to implement split-view DNS so that the website is accessible internally from the VPCs and externally over the internet with the same domain name, example.com. Which solution will meet these requirements?
+### 80- A company has multiple VPCs in the us-east-1 Region. The company has deployed a website in one of the VPCs. The company wants to implement split-view DNS so that the website is accessible internally from the VPCs and externally over the internet with the same domain name, example.com. Which solution will meet these requirements?
 
 - [ ] Change the DHCP options for each VPC to use the IP address of an on-premises DNS server. Create a private hosted zone and a public hosted zone for example.com. Map the private hosted zone to the website's internal IP address. Map the public hosted zone to the website's external IP address.
 - [x] Create Amazon Route 53 private hosted zones and public hosted zones that have the same name, example.com. Associate the VPCs with the private hosted zone. Create records in each hosted zone that determine how traffic is routed.
