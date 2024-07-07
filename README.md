@@ -911,6 +911,11 @@ For example, suppose you own the domain example.com, but you want to delegate co
 - [ ] Create an Amazon Route 53 Resolver inbound endpoint for resolving example.com internally. Create a Route 53 public hosted zone for routing external DNS queries.
 - [ ] Create an Amazon Route 53 Resolver outbound endpoint for resolving example.com externally. Create a Route 53 private hosted zone for routing internal DNS queries.
 
+**Explanation :**
+B – The solution requires split-view DNS, which is directly supported by Amazon Route 53. You can configure split-view DNS by creating public hosted zones and private hosted zones in Route 53 with the same name. If the private hosted zones are associated with VPCs, Route 53 Resolver will use the private hosted zones to answer queries from those VPCs and will use the public hosted zones to answer public queries.
+The other answer options will not work. An on-premises DNS server will not be able to replace Route 53 Resolver for operations within the VPC. A Resolver inbound endpoint will allow on-premises queries from on-premises networks to be resolved. A Resolver outbound endpoint is used to resolve queries from the VPC for on-premises addresses. Neither of those Resolver endpoints will provide the necessary public and internal resolution.
+
+
 **[⬆ Back to Top](#table-of-contents)**
 
 ### A company has developed a new web application that processes confidential data that is hosted onAmazon EC2 instances. The application needs to scale and must use certificates to authenticate clients. The application is configured to request a client's certificate and will validate the certificate as part of the initial handshake. Which Elastic Load Balancing (ELB) solution will meet these requirements?
