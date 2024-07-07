@@ -838,9 +838,19 @@
 
 **[⬆ Back to Top](#table-of-contents)**
 
-###  91- The application recently experienced an attack. In response, the company associated an AWS WAF web ACL with the CloudFront distribution. The company needs to use Amazon Athena to analyze application attacks that AWS WAF detects. Which solution will meet this requirement?
+### 91- The application recently experienced an attack. In response, the company associated an AWS WAF web ACL with the CloudFront distribution. The company needs to use Amazon Athena to analyze application attacks that AWS WAF detects. Which solution will meet this requirement?
 
 - [ ] Configure the ALB and the EC2 instance subnets to produce VPC flow logs. Configure the VPC flow logs to deliver logs to an Amazon S3 bucket for log analysis.
 - [ ] Create a trail in AWS CloudTrail to capture data events. Configure the trail to deliver logs to an Amazon S3 bucket for log analysis.
 - [ ] Configure the AWS WAF web ACL to deliver logs to an Amazon Kinesis Data Firehose delivery stream. Configure the stream to deliver the data to an Amazon S3 bucket for log analysis. Most Voted
 - [ ] Turn on access logging for the ALB. Configure the access logs to deliver the logs to an Amazon S3 bucket for log analysis.
+
+**[⬆ Back to Top](#table-of-contents)**
+
+### 92- A company deploys a software solution on Amazon EC2 instances that are in a cluster placement group. The solution's UI is a single HTML page. The HTML file size is 1,024 bytes. The software processes files that exceed 1,024 MB in size. The software shares files over the network to clients upon request. The files are shared with the Don't Fragment flag set. Elastic network interfaces of the EC2 instances are set up with jumbo frames. The UI is always accessible from all allowed source IP addresses, regardless of whether the source IP addresses are within a VPC, on the internet, or on premises. However, clients sometimes do not receive files that they request because the files fail to travel successfully from the software to the clients. Which options provide a possible root cause of these failures? (Choose two.)
+
+- [ ]  The source IP addresses are from on-premises hosts that are routed over AWS Direct Connect.
+- [ ]  The source IP addresses are from on-premises hosts that are routed over AWS Site-to-Site VPN.
+- [ ]  The source IP addresses are from hosts that connect over the public internet.
+- [ ]  The security group of the EC2 instances does not allow ICMP traffic.
+- [ ]  The operating system of the EC2 instances does not support jumbo frames.
