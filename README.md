@@ -949,12 +949,20 @@ For example, suppose you own the domain example.com, but you want to delegate co
 
 **[⬆ Back to Top](#table-of-contents)**
 
-### A company is migrating many applications from two on-premises data centers to AWS. The company's network team is setting up connectivity to the AWS environment. The migration will involve spreading the applications across two AWS Regions: us-east-1 and us-west-2. The company has set up AWS Direct Connect connections at two different locations. Direct Connect connection 1 is to the first data center and is at a location in us-east-1. Direct Connect connection 2 is to the second data center and is at a location in us-west-2. The company has connected both Direct Connect connections to a single Direct Connect gateway by using transit VIFs. The Direct Connect gateway is associated with transit gateways that are deployed in each Region. All traffic to and from AWS must travel through the first data center. In the event of failure, the second data center must take over the traffic. How should the network team configure BGP to meet these requirements?
+### 85- A company is migrating many applications from two on-premises data centers to AWS. The company's network team is setting up connectivity to the AWS environment. The migration will involve spreading the applications across two AWS Regions: us-east-1 and us-west-2. The company has set up AWS Direct Connect connections at two different locations. Direct Connect connection 1 is to the first data center and is at a location in us-east-1. Direct Connect connection 2 is to the second data center and is at a location in us-west-2. The company has connected both Direct Connect connections to a single Direct Connect gateway by using transit VIFs. The Direct Connect gateway is associated with transit gateways that are deployed in each Region. All traffic to and from AWS must travel through the first data center. In the event of failure, the second data center must take over the traffic. How should the network team configure BGP to meet these requirements?
 
 - [x] Configure the local preference BGP community tag 7224:7300 for the transit VIF connected to Direct Connect connection 1.
 - [ ] Configure the local preference BGP community tag 7224:9300 for the transit VIF connected to Direct Connect connection 2.
 - [ ] Use the AS_PATH attribute to prepend the additional hop for the transit VIF connected to Direct Connect connection 2.
 - [ ] Use the AS_PATH attribute to prepend the additional hop for the transit VIF connected to Direct Connect connection 1.
+
+
+**Explanation :**
+- A – The correct answer is to configure the local BGP community tag 7224:7300 for the transit VIF connected to the first AWS Direct Connect connection. By default, AWS uses the distance from the local AWS Region to the
+Direct Connect location to determine the VIF or transit VIF for routing. You can modify this behavior by assigning local preference communities to VIFs. This question asks for the VIF in Direct Connect connection 1 to have a higher preference. AWS supports the 7224:7300 local preference tag for high-preference use cases.
+- Option B includes the 7224:9300 community tag, which is used to control how far a customer-advertised prefix is propagated. This community tag will not help solve this routing priority problem.
+- The remaining answer options propose the use of the AS_PATH attribute to control the traffic between Direct Connect connections in multiple Regions. This strategy would be appropriate for handling multiple VIFs in a single Region
+
 
 **[⬆ Back to Top](#table-of-contents)**
 
@@ -1000,5 +1008,20 @@ For example, suppose you own the domain example.com, but you want to delegate co
 - [ ] In the shared VPC, configure one VPC peering connection to VPC A and another VPC peering connection to VPC B.
 
 **[⬆ Back to Top](#table-of-contents)**
+
+
+###  91- The application recently experienced an attack. In response, the company associated an AWS WAF web ACL with the CloudFront distribution. The company needs to use Amazon Athena to analyze application attacks that AWS WAF detects. Which solution will meet this requirement?
+
+- [ ] Configure the ALB and the EC2 instance subnets to produce VPC flow logs. Configure the VPC flow logs to deliver logs to an Amazon S3 bucket for log analysis.
+- [ ] Create a trail in AWS CloudTrail to capture data events. Configure the trail to deliver logs to an Amazon S3 bucket for log analysis.
+- [x] Configure the AWS WAF web ACL to deliver logs to an Amazon Kinesis Data Firehose delivery stream. Configure the stream to deliver the data to an Amazon S3 bucket for log analysis. Most Voted
+- [ ] Turn on access logging for the ALB. Configure the access logs to deliver the logs to an Amazon S3 bucket for log analysis.
+
+**Explanation :**
+
+- https://aws.amazon.com/blogs/security/trimming-aws-waf-logs-with-amazon-kinesis-firehose-transformations/
+- Options A and D suggest using VPC flow logs and ALB access logs, respectively. While these logs are valuable for specific purposes (network analysis and access patterns), they do not capture the detailed information about web requests and attacks that are logged by AWS WAF.
+- Option B involves AWS CloudTrail, which is more focused on auditing API calls rather than capturing detailed web request information.
+- Therefore, for analyzing application attacks detected by AWS WAF, configuring AWS WAF logs to be delivered to an Amazon Kinesis Data Firehose stream is the recommended approach.
 
 **[⬆ Back to Top](#table-of-contents)**
