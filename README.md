@@ -884,6 +884,12 @@ For example, suppose you own the domain example.com, but you want to delegate co
 - [ ] Access the SQS endpoint by using the public DNS name sqs.us-east-1 amazonaws.com in VPCs and on premises.
 - [x] Access the SQS endpoint by using the private DNS name of the interface endpoint .sqs.us-east-1.vpce. Amazonaws.com in VPCs and on premises.
 
+**Explanation :**
+
+- https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/centralized-access-to-vpc-private-endpoints.html
+- "How do we resolve the DNS for AWS service endpoint from the spoke VPCs?
+- We can enable the Private DNS for an interface endpoint and with that we can resolve the AWS service endpoint DNS from within the same VPC (for example, sqs.us-east-1.amazonaws.com). However, the AWS service endpoint does not resolve from the peered VPCs. For this, we can create a Private Hosted Zone (for example, sqs.us-east-1.amazonaws.com) and associate it with the peered VPCs."
+
 **[⬆ Back to Top](#table-of-contents)**
 
 ### A company's network engineer builds and tests network designs for VPCs in a development account. The company needs to monitor the changes that are made to network resources and must ensure strict compliance with network security policies. The company also needs access to the historical configurations of network resources. Which solution will meet these requirements?
