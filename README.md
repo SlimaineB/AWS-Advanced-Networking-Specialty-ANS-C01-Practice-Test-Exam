@@ -1042,3 +1042,14 @@ Direct Connect location to determine the VIF or transit VIF for routing. You can
 - Therefore, for analyzing application attacks detected by AWS WAF, configuring AWS WAF logs to be delivered to an Amazon Kinesis Data Firehose stream is the recommended approach.
 
 **[⬆ Back to Top](#table-of-contents)**
+
+### 92- A company deploys a software solution on Amazon EC2 instances that are in a cluster placement group. The solution's UI is a single HTML page. The HTML file size is 1,024 bytes. The software processes files that exceed 1,024 MB in size. The software shares files over the network to clients upon request. The files are shared with the Don't Fragment flag set. Elastic network interfaces of the EC2 instances are set up with jumbo frames. The UI is always accessible from all allowed source IP addresses, regardless of whether the source IP addresses are within a VPC, on the internet, or on premises. However, clients sometimes do not receive files that they request because the files fail to travel successfully from the software to the clients. Which options provide a possible root cause of these failures? (Choose two.)
+
+- [ ]  The source IP addresses are from on-premises hosts that are routed over AWS Direct Connect.
+- [x]  The source IP addresses are from on-premises hosts that are routed over AWS Site-to-Site VPN.
+- [x]  The source IP addresses are from hosts that connect over the public internet.
+- [ ]  The security group of the EC2 instances does not allow ICMP traffic.
+- [ ]  The operating system of the EC2 instances does not support jumbo frames.
+
+**Explanation :**
+- Internet and VPN doesn't work with jumbo frame (MTU 1501+) so it will be fragmented => " The files are shared with the Don't Fragment flag set"
