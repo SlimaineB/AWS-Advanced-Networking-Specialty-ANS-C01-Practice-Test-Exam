@@ -854,3 +854,14 @@
 - [ ]  The source IP addresses are from hosts that connect over the public internet.
 - [ ]  The security group of the EC2 instances does not allow ICMP traffic.
 - [ ]  The operating system of the EC2 instances does not support jumbo frames.
+
+**[⬆ Back to Top](#table-of-contents)**
+
+### 93- A company securely connects resources that are in its VPC to a software as a service (SaaS) solution from a SaaS provider. The SaaS solution is hosted in the AWS Cloud and is powered by AWS PrivateLink. The company uses a PrivateLink endpoint to access the SaaS solution behind the SaaS provider's Network Load Balancer (NLB). The company recently added a new Availability Zone and new subnets to its VPC. A network engineer is unable to deploy a new interface VPC endpoint for the SaaS solution in the new Availability Zone. What is the cause of this problem?
+
+- [ ]  The CIDR block of the new subnets conflicts with the SaaS provider's CIDR block.
+- [ ]  The enableDnsHostnames attribute and enableDnsSupport attribute were not configured on the new subnets in the new Availability Zone.
+- [ ]  The SaaS provider does not offer the solution in the new Availability Zone and has not configured cross-zone load balancing for the NLB.
+- [ ]  The new subnets are missing a route to the VPC internet gateway.
+
+
