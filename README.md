@@ -837,3 +837,10 @@
 - [ ] In the shared VPC, configure one VPC peering connection to VPC A and another VPC peering connection to VPC B.
 
 **[⬆ Back to Top](#table-of-contents)**
+
+###  91- The application recently experienced an attack. In response, the company associated an AWS WAF web ACL with the CloudFront distribution. The company needs to use Amazon Athena to analyze application attacks that AWS WAF detects. Which solution will meet this requirement?
+
+- [ ] Configure the ALB and the EC2 instance subnets to produce VPC flow logs. Configure the VPC flow logs to deliver logs to an Amazon S3 bucket for log analysis.
+- [ ] Create a trail in AWS CloudTrail to capture data events. Configure the trail to deliver logs to an Amazon S3 bucket for log analysis.
+- [ ] Configure the AWS WAF web ACL to deliver logs to an Amazon Kinesis Data Firehose delivery stream. Configure the stream to deliver the data to an Amazon S3 bucket for log analysis. Most Voted
+- [ ] Turn on access logging for the ALB. Configure the access logs to deliver the logs to an Amazon S3 bucket for log analysis.
